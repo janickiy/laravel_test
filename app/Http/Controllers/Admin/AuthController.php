@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use URL;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -23,10 +24,10 @@ class AuthController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function login(Request $request)
+    public function login(Request $request): RedirectResponse
     {
         // Validate the form data
         $this->validate($request, [
@@ -35,33 +36,29 @@ class AuthController extends Controller
         ]);
 
         // Attempt to log the user in
-        if (\Auth::guard('web')->attempt(['login' => $request->login, 'password' => $request->password], $request->remember)) {
+        if (Auth::guard('web')->attempt(['login' => $request->login, 'password' => $request->password], $request->remember)) {
             // if successful, then redirect to their intended location
-            return redirect()->intended(route('admin.templates.index'));
+            return redirect()->intended(route('admin.index'));
         }
         // if unsuccessful, then redirect back to the login with the form data
-        return redirect(URL::route('login'))->with('error', "Неверный логин или пароль!");
+        return redirect()->route('login')->with('error', "Неверный логин или пароль!");
     }
 
     /**
-     * @param $request
-     * @param $user
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse
      */
-    protected function authenticated($request, $user)
+    protected function authenticated(): RedirectResponse
     {
-        $redirect = redirect(URL::route('admin.templates.index'));
-
-        return $redirect;
+        return redirect()->route('admin.index');
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse
      */
-    public function logout()
+    public function logout(): RedirectResponse
     {
-        \Auth::guard('web')->logout();
+        Auth::guard('web')->logout();
 
-        return redirect(URL::route('login'));
+        return  redirect()->route('login');
     }
 }

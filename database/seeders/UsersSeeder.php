@@ -11,7 +11,6 @@ class UsersSeeder extends Seeder
     {
         User::create([
             'name' => 'admin',
-            'role' => 'admin' ,
             'login' => 'admin',
             'password' => '1234567',
         ]);
