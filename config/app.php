@@ -250,7 +250,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         // 'Example' => App\Facades\Example::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'PermissionsHelper' => App\Helpers\PermissionsHelper::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Form' => Collective\Html\FormFacade::class,
 

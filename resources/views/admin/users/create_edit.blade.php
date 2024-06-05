@@ -67,6 +67,18 @@
 
                                 <div class="form-group">
 
+                                    {!! Form::label('role', trans('frontend.form.role')) !!}
+
+                                    {!! Form::select('role', $options, $user->role ?? 'admin', ['placeholder' => trans('frontend.form.select_role'), 'class' => 'custom-select']) !!}
+
+                                    @if ($errors->has('role'))
+                                        <p class="text-danger">{{ $errors->first('role') }}</p>
+                                    @endif
+
+                                </div>
+
+                                <div class="form-group">
+
                                     {!! Form::label('password', trans('frontend.form.password')) !!}
 
                                     {!! Form::password('password', ['class' => 'form-control']) !!}
@@ -121,3 +133,4 @@
 
 
 @endsection
+

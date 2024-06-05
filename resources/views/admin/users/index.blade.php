@@ -33,8 +33,8 @@
                                 <tr>
                                     <th>Логин</th>
                                     <th>Имя</th>
-                                    <th>Создан</th>
-                                    <th style="width: 10%">Действия</th>
+                                    <th>Добавлен</th>
+                                    <th style="width: 10%">Дейтсвие</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
@@ -103,7 +103,6 @@
                 'columns': [
                     {data: 'login', name: 'login'},
                     {data: 'name', name: 'name'},
-                    {data: 'description', name: 'description'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
