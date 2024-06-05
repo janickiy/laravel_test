@@ -26,13 +26,13 @@
 
                         <div class="card-body">
 
-                            <p>*-{{ trans('frontend.form.required_fields') }}</p>
+                            <p>*-обязательные поля</p>
 
                             <div class="form-group">
 
-                                {!! Form::label('name', trans('frontend.form.name')) !!}
+                                {!! Form::label('name', 'Имя') !!}
 
-                                {!! Form::text('name', old('name', $row->name ?? null), ['class' => 'form-control', 'placeholder' => trans('frontend.form.name')]) !!}
+                                {!! Form::text('name', old('name', $row->name ?? null), ['class' => 'form-control', 'placeholder' => 'Имя']) !!}
 
                                 @if ($errors->has('name'))
                                     <p class="text-danger">{{ $errors->first('name') }}</p>
@@ -41,24 +41,12 @@
 
                             <div class="form-group">
 
-                                {!! Form::label('login', trans('frontend.form.login')) !!}
+                                {!! Form::label('login', 'Логин') !!}
 
-                                {!! Form::text('login', old('login', $user->login ?? null), [ 'placeholder' => trans('frontend.form.login'), 'class' => 'form-control']) !!}
+                                {!! Form::text('login', old('login', $user->login ?? null), [ 'placeholder' => 'Логин', 'class' => 'form-control']) !!}
 
                                 @if ($errors->has('login'))
                                     <p class="text-danger">{{ $errors->first('login') }}</p>
-                                @endif
-
-                            </div>
-
-                            <div class="form-group">
-
-                                {!! Form::label('description', trans('frontend.form.description')) !!}
-
-                                {!! Form::textarea('description', old('description', $user->description ?? null), [ 'placeholder' => trans('frontend.form.description'), 'rows' => 3, 'class' => 'form-control']) !!}
-
-                                @if ($errors->has('description'))
-                                    <p class="text-danger">{{ $errors->first('description') }}</p>
                                 @endif
 
                             </div>
@@ -67,19 +55,7 @@
 
                                 <div class="form-group">
 
-                                    {!! Form::label('role', trans('frontend.form.role')) !!}
-
-                                    {!! Form::select('role', $options, $user->role ?? 'admin', ['placeholder' => trans('frontend.form.select_role'), 'class' => 'custom-select']) !!}
-
-                                    @if ($errors->has('role'))
-                                        <p class="text-danger">{{ $errors->first('role') }}</p>
-                                    @endif
-
-                                </div>
-
-                                <div class="form-group">
-
-                                    {!! Form::label('password', trans('frontend.form.password')) !!}
+                                    {!! Form::label('password', 'пароль') !!}
 
                                     {!! Form::password('password', ['class' => 'form-control']) !!}
 
@@ -91,7 +67,7 @@
 
                                 <div class="form-group">
 
-                                    {!! Form::label('password_again', trans('frontend.form.password_again')) !!}
+                                    {!! Form::label('password_again', 'повтор пароля') !!}
 
                                     {!! Form::password('password_again', ['class' => 'form-control']) !!}
 
@@ -108,10 +84,10 @@
 
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">
-                                {{ isset($user) ? trans('frontend.form.edit') : trans('frontend.form.add') }}
+                                {{ isset($user) ? 'редактировать' : 'добавить' }}
                             </button>
-                            <a class="btn btn-default" href="{{ URL::route('admin.users.index') }}">
-                                {{ trans('frontend.form.back') }}
+                            <a class="btn btn-default" href="{{ URL::route('admin.index') }}">
+                               назад
                             </a>
                         </div>
 
