@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Http\Requests\Admin\Users\StoreRequest;
+use App\Http\Requests\Admin\Users\UpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\Users\StoreRequest;
-use App\Http\Requests\Admin\Users\UpdateRequest;
 use Hash;
 
 class UserController extends Controller
