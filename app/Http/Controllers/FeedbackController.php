@@ -27,9 +27,10 @@ class FeedbackController extends Controller
         $data = new stdClass();
         $data->name = $request->name;
         $data->email = $request->email;
+        $data->phone = $request->phone;
         $data->message = $request->message;
 
-        Mail::to($data->email)->send(new FeedbackMailer($data));
+        Mail::to(env('MAIL_TO'))->send(new FeedbackMailer($data));
 
         return redirect()->route('feedback.index')
             ->with('success', 'Ваше сообщение успешно отправлено');

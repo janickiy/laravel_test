@@ -29,7 +29,7 @@ class FeedbackMailer extends Mailable {
      * @return $this
      */
     public function build() {
-        return $this->from('noreply@aurora.com', 'ООО ТД АВРОРА')
+        return $this->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'))
             ->subject('Форма обратной связи')
             ->view('email.feedback', ['data' => $this->data]);
     }

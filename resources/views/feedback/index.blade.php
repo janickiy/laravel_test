@@ -27,6 +27,10 @@
                    required maxlength="100" value="{{ old('email') ?? '' }}">
         </div>
         <div class="form-group">
+            <input type="text" class="form-control" name="phone" placeholder="Телефон"
+                   required maxlength="100" value="{{ old('phone') ?? '' }}">
+        </div>
+        <div class="form-group">
         <textarea class="form-control" name="message" placeholder="Ваше сообщение"
                   required maxlength="500" rows="3">{{ old('message') ?? '' }}</textarea>
         </div>
