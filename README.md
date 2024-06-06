@@ -6,9 +6,5 @@
 4. `php artisan db:seed`
 5. `php artisan key:generate`
 
-# Панель администратора
-http://домен/cp
-логин admin
-пароль 1234567
 
 
